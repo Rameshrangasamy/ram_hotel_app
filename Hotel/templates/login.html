@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body class="bg-info">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/food-munch-img.png"
+            class="food-munch-logo"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-link active" id="navItem1" href="/admin/">
+              Admin
+              <span class="sr-only">(current)</span>
+            </a>
+            <a class="nav-link" href="register" id="navItem2">Register</a>
+            <a class="nav-link active" id="navItem1" href="#">
+              Contact
+              <span class="sr-only">(current)</span>
+            </a>
+            <a class="nav-link active" id="navItem1" href="#">
+              Help
+              <span class="sr-only">(current)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div
+      class="container d-flex flex-column justify-content-ceneter align-items-center"
+    >
+      <div>
+        <h1 class="form-heading text-warning">Login</h1>
+        {% if messages %} {% for message in messages %}
+        <p id="nameErrMsg" class="error-message">**{{message}}**</p>
+        {% endfor %} {% endif %}
+        <form action="login" method="post">
+          {%csrf_token%}
+          <div class="mb-3">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="username"
+              placeholder="Enter name"
+            />
+            <p id="nameErrMsg" class="error-message"></p>
+          </div>
+
+          <div class="mb-3">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Enter password"
+            />
+          </div>
+
+          <button class="btn btn-primary">Submit</button>
+        </form>
+        <p>
+          New customer? Please
+          <a href="register" class="text-warning">Register</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
